@@ -1,0 +1,20 @@
+# Common
+*.log
+*.tmp
+*.bak
+*.orig
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.project
+*.settings/
+
+# LuaRocks
+*.rock
+/luarocks
+/lua
+/lua_modules
+/.luarocks
+

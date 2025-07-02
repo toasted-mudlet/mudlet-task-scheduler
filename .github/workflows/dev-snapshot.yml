@@ -1,0 +1,12 @@
+name: Dev snapshot
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+jobs:
+  dev-snapshot:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: toasted-mudlet/ci-templates/.github/workflows/lua-dev-snapshot.yml@main
