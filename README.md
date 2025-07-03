@@ -135,7 +135,7 @@ scheduled steps.
 If you create a new project based substantially on this task scheduler, please
 consider adding the following attribution or similar for all derived code:
 
-> This project is based on [Toasted Mudlet Task Scheduler](https://github.com/toasted-mudlet/mudlet_task_scheduler), originally
+> This project is based on [Toasted Mudlet Task Scheduler](https://github.com/toasted-mudlet/mudlet-task-scheduler), originally
 > licensed under the MIT License (see [LICENSE](LICENSE) for details). All
 > original code and documentation remain under the MIT License.
 
