@@ -27,7 +27,7 @@ This task scheduler is designed for use in **Mudlet packages**.
 
 > **Note:**  
 > Usage outside your package code, such as in global scripts or the Mudlet
-> editor, is discouraged and, in any case, depends on your LuaRocks integration 
+> editor, is discouraged and, in any case, depends on your LuaRocks integration
 > layer.
 
 ## Installation
@@ -110,6 +110,53 @@ scheduler:schedule(
 )
 ```
 
+## Singleton and Policies
+
+### Singleton Tasks
+
+The scheduler supports **singleton tasks**—tasks that are uniquely identified 
+by a tag and can have only one instance running at a time for that tag.
+
+To schedule a singleton task, use the `singleton` and `tag` options:
+
+```
+local id = scheduler:schedule(
+    myTask,
+    onComplete,
+    0.1,
+    { tag = "myUniqueTask", singleton = true }
+)
+```
+
+### Singleton Policies
+
+When scheduling a singleton task and another task with the same tag is already 
+running, you can control what happens using the `singleton_policy` option:
+
+- **"ignore"**: Do not schedule the new task if one is already running for the 
+  tag.
+- **"replace"** (default): Cancel the currently running task and replace it with
+  the new one.
+- **"queue"**: Queue the new task to run after the current one finishes.
+
+**Example:**
+
+```
+-- Only one task with tag "foo" will run at a time.
+scheduler:schedule(task1, onComplete1, 0.1, { tag = "foo", singleton = true, singleton_policy = "replace" })
+scheduler:schedule(task2, onComplete2, 0.1, { tag = "foo", singleton = true, singleton_policy = "queue" })
+```
+
+### Tagging
+
+Tags can also be used to group and manage tasks.  
+You can cancel or list all tasks with a specific tag:
+
+```
+scheduler:cancelByTag("myUniqueTask")
+local ids = scheduler:listTasksByTag("myUniqueTask")
+```
+
 ## Testing
 
 To test your scheduled code outside Mudlet, use the included `tempTimer` mock:
@@ -127,7 +174,7 @@ after_each(function()
 end)
 ```
 
-Advance time in your tests with `MockTempTimer:advanceTime(seconds)` to simulate 
+Advance time in your tests with `MockTempTimer:advanceTime(seconds)` to simulate
 scheduled steps.
 
 ## Attribution
