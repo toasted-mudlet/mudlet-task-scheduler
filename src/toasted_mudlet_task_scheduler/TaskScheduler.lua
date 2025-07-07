@@ -31,6 +31,7 @@ end
 -- @tparam[opt=0.1] number interval Time in seconds between task steps.
 -- @treturn string The unique task ID.
 function TaskScheduler:schedule(task, onComplete, interval)
+    interval = interval or 0.1
     local id = uuid()
     local runner = TaskRunner:new(task, function(success, result)
         self.tasks[id] = nil
