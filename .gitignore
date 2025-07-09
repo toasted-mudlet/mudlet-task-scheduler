@@ -18,3 +18,5 @@
 /lua_modules
 /.luarocks
 
+# LuaCov
+/luacov.*.out
