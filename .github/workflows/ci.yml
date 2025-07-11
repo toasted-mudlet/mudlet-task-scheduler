@@ -9,5 +9,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
+  lua:
+    name: Lua
+    strategy:
+      matrix:
+        lua-version: [ "5.1.5", "5.2.4", "5.3.6", "5.4.6" ]
+      fail-fast: false
     uses: toasted-mudlet/ci-templates/.github/workflows/lua-ci.yml@main
+    with:
+      lua-version: ${{ matrix.lua-version }}
+
+  luajit:
+    name: LuaJIT
+    strategy:
+      matrix:
+        lua-version: [ "luajit-2.1.0-beta3" ]
+      fail-fast: false
+    uses: toasted-mudlet/ci-templates/.github/workflows/luajit-ci.yml@main
+    with:
+      lua-version: ${{ matrix.lua-version }}
