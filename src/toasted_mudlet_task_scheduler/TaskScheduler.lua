@@ -1,5 +1,6 @@
---- TaskScheduler module for managing and running asynchronous tasks.
--- @module toasted_mudlet_task_scheduler.TaskScheduler
+--- TaskScheduler class for managing and running asynchronous tasks.
+-- @classmod toasted_mudlet_task_scheduler.TaskScheduler
+
 local TaskRunner = require "toasted_mudlet_task_scheduler.TaskRunner"
 local uuid = require "uuid"
 
@@ -11,8 +12,6 @@ uuid.set_rng(function(n)
     return table.concat(t)
 end)
 
---- TaskScheduler class.
--- @type TaskScheduler
 local TaskScheduler = {}
 TaskScheduler.__index = TaskScheduler
 

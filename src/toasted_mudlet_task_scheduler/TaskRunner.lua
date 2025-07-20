@@ -1,5 +1,6 @@
---- TaskRunner module for executing tasks in steps with intervals.
--- @module toasted_task_scheduler.TaskRunner
+--- TaskRunner class for executing tasks in steps with intervals.
+-- @classmod toasted_task_scheduler.TaskRunner
+
 local TaskRunner = {}
 TaskRunner.__index = TaskRunner
 

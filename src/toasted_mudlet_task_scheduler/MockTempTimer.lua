@@ -1,3 +1,6 @@
+--- MockTempTimer module for simulating Mudlet tempTimer/killTimer in tests.
+-- @module toasted_mudlet_task_scheduler.MockTempTimer
+
 local MockTempTimer = {}
 MockTempTimer.timers = {}
 MockTempTimer.nextTimerId = 1
